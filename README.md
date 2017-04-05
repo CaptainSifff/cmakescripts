@@ -9,6 +9,8 @@ FindNUMPY.cmake  : A script to check for numpy. has the include path and a full 
 
 FindSCIPY.cmake  : A script to check for scipy. has the include path and a full version check
 
+installviapip.cmake : A script to install pip and then install python packages using pip, e.g. install_via_pip("h5py")
+
 Usage:
 Put them in your cmake module include path and then use them:
 

@@ -1,0 +1,26 @@
+if(NOT PYTHONINTERP_FOUND)
+        find_package(PythonInterp REQUIRED)
+endif()
+
+FUNCTION(INSTALL_VIA_PIP module)
+#check for pip. The pip installer needs the python-xml module.
+execute_process(COMMAND ${PYTHON_EXECUTABLE} -m pip freeze OUTPUT_VARIABLE PYTHON_PACKAGE_LIST)
+    if ("${PYTHON_PACKAGE_LIST}" STREQUAL "")
+        execute_process(COMMAND pip freeze OUTPUT_VARIABLE PYTHON_PACKAGE_LIST)
+        if ("${PYTHON_PACKAGE_LIST}" STREQUAL "")
+            message(WARNING "Failed to find pip. Pip is required to automatically install ${module}. Will now install pip.")
+            file(DOWNLOAD https://bootstrap.pypa.io/get-pip.py ./get-pip.py)
+            execute_process(COMMAND ${PYTHON_EXECUTABLE} ./get-pip.py)
+        endif()
+    endif()
+# pip is present
+
+message(STATUS "Installing ${module}")
+        execute_process(COMMAND ${PYTHON_EXECUTABLE} -m pip "install" --user ${module} RESULT_VARIABLE SUCCESS)
+        if (NOT "${SUCCESS}" STREQUAL "0")
+            execute_process(COMMAND pip "install" --user ${module} RESULT_VARIABLE SUCCESS)
+            if (NOT "${SUCCESS}" STREQUAL "0")
+                message(WARNING "Failed to automatically install ${module}. Please install manually")
+            endif()
+        endif()
+ENDFUNCTION()
