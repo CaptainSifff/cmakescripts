@@ -1,6 +1,6 @@
 # - FindH5PY
 # By Florian Goth, fgoth@physik.uni-wuerzburg.de
-# Find SciPy includes and library
+# Find H5Py includes and library
 # This module defines:
 # H5PY_FOUND
 # H5PY_VERSION             - the version of H5Py found as a string
@@ -40,7 +40,7 @@ if(NOT H5PY_FOUND AND PYTHONINTERP_FOUND)
         list(GET _H5PY_VERSION_LIST 0 H5PY_VERSION_MAJOR)
         list(GET _H5PY_VERSION_LIST 1 H5PY_VERSION_MINOR)
         list(GET _H5PY_VERSION_LIST 2 H5PY_VERSION_PATCH)
-        #string(REGEX MATCH "[0-9]*" NUMPY_VERSION_PATCH ${NUMPY_VERSION_PATCH})
+        string(REGEX MATCH "[0-9]*" H5PY_VERSION_PATCH ${H5PY_VERSION_PATCH})
         math(EXPR H5PY_VERSION_DECIMAL
             "(${H5PY_VERSION_MAJOR} * 10000) + (${H5PY_VERSION_MINOR} * 100) + ${H5PY_VERSION_PATCH}")
         
