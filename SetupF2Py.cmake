@@ -4,7 +4,7 @@ if(NOT PYTHONINTERP_FOUND)
 endif()
 
 if (NOT F2PY_SUFFIX)
-  execute_process(COMMAND "${PYTHON_EXECUTABLE}" -c "import sysconfig; print(sysconfig.get_config_var('EXT_SUFFIX') or sysconfig.get_config_var('SO'))"
+  execute_process(COMMAND "${PYTHON_EXECUTABLE}" -c "import distutils.sysconfig; print(distutils.sysconfig.get_config_var('EXT_SUFFIX') or distutils.sysconfig.get_config_var('SO'))"
                   OUTPUT_VARIABLE PYTHON_EXT_SUFFIX
                   RESULT_VARIABLE FOUND_PYTHON_EXT_SUFFIX)
   if (NOT ${FOUND_PYTHON_EXT_SUFFIX} EQUAL 0)
