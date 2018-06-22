@@ -2,7 +2,7 @@
 # By Florian Goth, fgoth@physik.uni-wuerzburg.de
 # Find H5Py includes and library
 # This module defines:
-# H5PY_FOUND
+# H5PY_FOUND               - TRUE if H5PY is found
 # H5PY_VERSION             - the version of H5Py found as a string
 # H5PY_VERSION_MAJOR       - the major version number of H5Py
 # H5PY_VERSION_MINOR       - the minor version number of H5Py
@@ -25,7 +25,6 @@ if(NOT H5PY_FOUND AND PYTHONINTERP_FOUND)
 #    if(NOT H5PY_COMMAND_RESULT MATCHES 0)
 #        message("SciPy import failure:\n${_H5PY_ERROR_VALUE}")
     if(H5PY_COMMAND_RESULT MATCHES 0)
-        set(H5PY_FOUND TRUE)
         # Convert the process output into a list
         string(REGEX REPLACE ";" "\\\\;" _H5PY_VALUES ${_H5PY_VALUES})
         string(REGEX REPLACE "\n" ";" _H5PY_VALUES ${_H5PY_VALUES})

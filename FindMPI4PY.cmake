@@ -25,7 +25,6 @@ if(NOT MPI4PY_FOUND AND PYTHONINTERP_FOUND)
 #    if(NOT MPI4PY_COMMAND_RESULT MATCHES 0)
 #        message("SciPy import failure:\n${_MPI4PY_ERROR_VALUE}")
     if(MPI4PY_COMMAND_RESULT MATCHES 0)
-        set(MPI4PY_FOUND TRUE)
         # Convert the process output into a list
         string(REGEX REPLACE ";" "\\\\;" _MPI4PY_VALUES ${_MPI4PY_VALUES})
         string(REGEX REPLACE "\n" ";" _MPI4PY_VALUES ${_MPI4PY_VALUES})
